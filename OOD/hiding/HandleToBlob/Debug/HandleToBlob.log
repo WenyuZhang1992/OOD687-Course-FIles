@@ -1,0 +1,4 @@
+﻿  HandleToBlob.cpp
+HandleToBlob.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  HandleToBlob.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\hiding\HandleToBlob\Debug\HandleToBlob.exe
+  HandleToBlob.vcxproj -> Debug\HandleToBlob.pdb (Full PDB)

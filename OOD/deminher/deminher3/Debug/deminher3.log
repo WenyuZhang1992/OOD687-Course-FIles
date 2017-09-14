@@ -1,0 +1,4 @@
+﻿  DEM_INH3.CPP
+DEM_INH3.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  deminher3.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\deminher\deminher3\Debug\deminher3.exe
+  deminher3.vcxproj -> Debug\deminher3.pdb (Full PDB)

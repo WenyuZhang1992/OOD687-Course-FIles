@@ -1,0 +1,121 @@
+///////////////////////////////////////////////////////////////
+//  Hiding2.cpp - demonstrate mixing overriding and overloading
+//
+//  Overloading is the use of the same function identifier
+//  for different functions DECLARED IN THE SAME SCOPE.
+//
+//  Overriding is the redefinition, in a derived class, of the
+//  same function signature used in a base class.  This supports
+//  class specific behavior for a base class protocol.
+//
+//  Note that the virtual function signature may vary in one
+//  detail.  If the return type of the base virtual function
+//  is a pointer or reference to a base object, then the
+//  overriden derived function may return a pointer or reference
+//  to a derived object.  That is done with the id() function
+//  below.  We say that derived::id() returns a covariant type.
+//
+//  Jim Fawcett, CSE687 - Object Oriented Design, Spring 2003
+/////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+///////////////////////////////////////////////////////////
+//  base::process is overloaded in the base:: scope
+//  - They are virtual and so may vary over the hierarchy
+//
+class base
+{
+public:
+  virtual ~base() {}
+  virtual void process(int x);
+  virtual void process(double d);
+  virtual base& id();
+};
+
+inline base& base::id()
+{
+  cout << endl << setw(30) << "  base object invoking:";
+  return *this;
+}
+
+inline void base::process(int i)
+{
+  cout << setw(30) << "  base::process(int i):" << "i = " << i;
+}
+
+inline void base::process(double d)
+{
+  cout << setw(30) << "  base::process(double d):" << "d = " << d;
+}
+//
+///////////////////////////////////////////////////////////
+//  derived::process(int) overrides base process(int) 
+//  but it is not in base scope, so:
+//  - The identifier derived::process hides the overloaded
+//    base::process functions
+//
+class derived : public base
+{
+public:
+  virtual void process(int i);  // hides base process functions
+  derived& id();
+};
+
+inline derived& derived::id()
+{
+  cout << endl << setw(30) << "  derived object invoking:";
+  return *this;
+}
+
+inline void derived::process(int i)
+{
+  cout << setw(30) << "  derived::process(int i):" << "i = " << i;
+}
+
+//
+const int UPPER = true;
+template <char ch>
+string title(const string &t,bool upper=false)
+{
+  string underline(t.length()+2,ch);
+  string temp;
+  if(upper)
+    temp = string("\n ") + underline + string("\n  ");
+  else
+    temp = string("\n  ");
+  return temp + t + string("\n ") + underline;
+}
+
+int main()
+{
+  cout << title<'='>("Problems Mixing Overloading and Overriding");
+  cout.setf(ios::left,ios::adjustfield);
+  cout.fill(' ');
+  base b;
+  b.id().process(3);
+  b.id().process(3.5);
+
+  derived d;
+  d.id().process(3);
+  d.id().process(3.5);   // does not call base::process(double);
+  
+  cout << endl << 
+    "\n  base provides virtual functions process(int) and process(double)";
+  cout << 
+    "\n  derived overrides process(int) which hides base process(double)";
+  cout << 
+    "\n  so derived::process(3.5) truncates 3.5 to integer 3";
+  cout << endl <<
+    title<'='>("Message: don't overload virtual functions",UPPER);
+  
+  cout << "\n\n";
+}
+///////////////////////////////////////////////////////////////
+//  The Message:
+//    Don't overload virtual functions
+//
+

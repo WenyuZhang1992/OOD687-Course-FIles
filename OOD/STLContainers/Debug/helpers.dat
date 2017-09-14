@@ -1,0 +1,33 @@
+
+  Demonstrating Helpers Package
+ ===============================
+
+  demo std::vector<int>
+ -----------------------
+  0, 1, 2, 3, 4, 3, 2
+
+  demo std::list<std::string>
+ -----------------------------
+  "zero", "one", "two", "three", "four", "three", "two"
+
+  demo std::string
+ ------------------
+  'a', ' ', 't', 'e', 's', 't', ' ', 's', 't', 'r', 'i', 'n', 'g'
+
+  demo std::map<int, std::string>
+ ---------------------------------
+  { 1, one }
+  { 2, two }
+  { 3, three }
+  { 4, four }
+  { 5, five }
+
+  demo std::unordered_map<int, std::string>
+ -------------------------------------------
+  { "one", 1 }
+  { "two", 2 }
+  { "three", 3 }
+  { "five", 5 }
+  { "four", 4 }
+
+

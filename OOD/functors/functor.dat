@@ -1,0 +1,13 @@
+
+  Testing Functors 
+ ==================
+
+  product of 3 and 2 is 6
+    product returned 6
+
+  is 2 == 3.14153?  
+    returned false
+
+  is 4 == 4?  
+    returned true
+

@@ -1,0 +1,8 @@
+﻿  StringServer.cpp
+  Utilities.cpp
+  Sockets.cpp
+  Logger.cpp
+  Cpp11-BlockingQueue.cpp
+  Generating Code...
+  StringServer.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\StringSocketServer\Debug\StringServer.exe
+  StringServer.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\StringSocketServer\Debug\StringServer.pdb (Full PDB)

@@ -1,0 +1,365 @@
+/*  iostream.h -- basic stream I/O declarations
+
+    Copyright (c) 1990, 1991 by Borland International
+    All rights reserved.
+
+//----< ios >--------------------------------------------------
+//             base class for streams - provides formatting
+
+class ios {
+
+public:
+
+    // stream status bits
+    enum io_state   {
+	goodbit  = 0x00,    // no bit set: all is ok
+	eofbit   = 0x01,    // at end of file
+	failbit  = 0x02,    // last I/O operation failed
+	badbit   = 0x04,    // invalid operation attempted
+	hardfail = 0x80     // unrecoverable error
+	};
+
+    // stream operation mode
+    enum open_mode  {
+	in       = 0x01,    // open for reading
+	out      = 0x02,    // open for writing
+	ate      = 0x04,    // seek to eof upon original open
+	app      = 0x08,    // append mode: all additions at eof
+	trunc    = 0x10,    // truncate file if already exists
+	nocreate = 0x20,    // open fails if file doesn't exist
+	noreplace= 0x40,    // open fails if file already exists
+	binary   = 0x80     // binary (not text) file
+	};
+
+    // stream seek direction
+    enum seek_dir { beg=0, cur=1, end=2 };
+
+    // formatting flags
+    enum    {
+	skipws    = 0x0001, // skip whitespace on input
+	left      = 0x0002, // left-adjust output
+	right     = 0x0004, // right-adjust output
+	internal  = 0x0008, // padding after sign or base indicator
+	dec       = 0x0010, // decimal conversion
+	oct       = 0x0020, // octal conversion
+	hex       = 0x0040, // hexadecimal conversion
+	showbase  = 0x0080, // use base indicator on output
+	showpoint = 0x0100, // force decimal point (floating output)
+	uppercase = 0x0200, // upper-case hex output
+	showpos   = 0x0400, // add '+' to positive integers
+	scientific= 0x0800, // use 1.2345E2 floating notation
+	fixed     = 0x1000, // use 123.45 floating notation
+	unitbuf   = 0x2000, // flush all streams after insertion
+	stdio     = 0x4000  // flush stdout, stderr after insertion
+	};
+/**/
+    // constants for second parameter of setf()
+    // which turns off these fields
+static  const long basefield;       // dec | oct | hex
+static  const long adjustfield;     // left | right | internal
+static  const long floatfield;      // scientific | fixed
+
+    // constructor, destructor
+	 ios(streambuf  *);
+virtual  ~ios();
+
+    // for reading/setting/clearing format flags
+    long     flags();
+    long     flags(long);
+    long     setf(long _setbits, long _field);
+    long     setf(long);
+    long     unsetf(long);
+
+    // reading/setting field width
+    int      width();
+    int      width(int);
+
+    // reading/setting padding character
+    char     fill();
+    char     fill(char);
+
+    // reading/setting digits of floating precision
+    int      precision(int);
+    int      precision();
+
+    // reading/setting ostream tied to this stream
+    ostream  *  tie(ostream  *);
+    ostream  *  tie();
+
+    // find out about current stream state
+    int      rdstate();       // return the stream state
+    int      eof();           // non-zero on end of file
+    int      fail();          // non-zero if an operation failed
+    int      bad();           // non-zero if error occurred
+    int      good();          // non-zero if no state bits set
+    void     clear(int = 0);  // set the stream state
+    int      operator! ();    // non-zero if state failed
+
+    streambuf  *  rdbuf();    // get ptr to assigned streambuf
+
+static void  sync_with_stdio();
+   // allows mixing streams and stdio FILES - don't use for new code
+
+};
+/**/
+//----< streambuf >--------------------------------------------
+//                   buffer handling class used by ios, filebuf
+
+class  streambuf {
+
+public:
+
+    // constructors and destructors
+	 streambuf();                 // make empty streambuf
+	 streambuf(char  *, int);     // make streambuf with
+				      // given char array
+virtual  ~streambuf();
+
+    // use the provided char array for the buffer if possible
+virtual streambuf  *  setbuf(  signed char  *, int);
+    // WARNING:  this function is not virtual; do not override
+    streambuf  *   setbuf(unsigned char  *, int);
+
+    // getting (extracting) characters
+    int      sgetc();         // peek at next char
+    int      snextc();        // advance to and return next char
+    int      sbumpc();        // return current char and advance
+    void     stossc();        // advance to next character
+    int      sgetn(char  *, int);     // get next n chars
+virtual int  do_sgetn(char  *, int);  // implementation of sgetn
+virtual int  underflow();     // fill empty buffer
+    int      sputbackc(char); // return char to input
+virtual int  pbackfail(int);  // implementation of sputbackc
+    int      in_avail();      // number of avail chars in buffer
+
+    // putting (inserting) characters
+    int      sputc(int);          // put one char
+    int      sputn(const char  *, int); // put n chars from string
+virtual int  do_sputn(const char  * s, int n); // implementation of sputn
+virtual int  overflow(int = EOF); // flush buffer and make more room
+    int      out_waiting();       // number of unflushed chars
+
+    // moving around in stream
+virtual streampos  seekoff(streamoff, ios::seek_dir,
+				 int = (ios::in | ios::out));
+virtual streampos  seekpos(streampos, int = (ios::in | ios::out));
+virtual int  sync();
+
+    void     dbp();       // for debugging streambuf implementations
+};
+/**/
+//----< istream >----------------------------------------------
+//                 provides formatted and unformatted input
+//                 from a streambuf via ios
+
+class  istream : virtual public ios {
+
+public:
+    // constructor and destructor
+	 istream(streambuf  *);
+virtual  ~istream();
+
+    int  ipfx(int = 0);       // input prefix function
+    int  ipfx0();             // same as ipfx(0)
+    int  ipfx1();             // same as ipfx(1)
+    void isfx() { }           // unused input suffix function
+
+    // set/read the get pointer's position
+    istream  &  seekg(streampos);
+    istream  &  seekg(streamoff, seek_dir);
+    streampos   tellg();
+
+    int  sync();
+
+    /*
+     * Unformatted extraction operations
+     */
+    // extract characters into an array
+    // 1st arg-client provided array, 2nd arg-length of array
+    // 3rd arg-delimiter char
+    istream  &  get(  signed char  *, int, char = '\n');
+    istream  &  get(unsigned char  *, int, char = '\n');
+    istream  &  read(  signed char  *, int);
+    istream  &  read(unsigned char  *, int);
+
+    // extract characters into an array up to termination char
+    istream  &  getline(  signed char  *, int, char = '\n');
+    istream  &  getline(unsigned char  *, int, char = '\n');
+
+    // extract characters into a streambuf up to termination char
+    istream  &  get(streambuf  &, char = '\n');
+
+    // extract a single character
+    istream  &  get(unsigned char  &);
+    istream  &  get(  signed char  &);
+    int         get();
+
+    int       peek();     // return next char without extraction
+    int       gcount();   // number unformatted chars last extracted
+    istream  &  putback(char);  // push back char into input
+
+    // extract and discard chars but stop at delim
+    istream  &  ignore(int = 1, int = EOF);
+/**/
+    /*
+     * Formatted extraction operations
+     */
+    // manipulators
+    istream  &  operator>> (istream  & ( *_f)(istream  &));
+    istream  &  operator>> (ios  & ( *_f)(ios  &) );
+
+    // get from character representation of primitive types
+    istream  &  operator>> (  signed char  *);
+    istream  &  operator>> (unsigned char  *);
+    istream  &  operator>> (unsigned char  &);
+    istream  &  operator>> (  signed char  &);
+    istream  &  operator>> (short  &);
+    istream  &  operator>> (int  &);
+    istream  &  operator>> (long  &);
+    istream  &  operator>> (unsigned short  &);
+    istream  &  operator>> (unsigned int  &);
+    istream  &  operator>> (unsigned long  &);
+    istream  &  operator>> (float  &);
+    istream  &  operator>> (double  &);
+    istream  &  operator>> (long double  &);
+
+    // extract from this istream, insert into streambuf
+    istream  &  operator>> (streambuf  *);
+};
+/**/
+//----< ostream >----------------------------------------------
+//                 provides formatted and unformatted
+//                 output to a streambuf via ios
+
+class  ostream : virtual public ios {
+
+public:
+    // constructors and destructor
+	 ostream(streambuf  *);
+virtual  ~ostream();
+
+    ostream  &  flush();
+
+    // set/read the put pointer's position
+    ostream  &  seekp(streampos);
+    ostream  &  seekp(streamoff, seek_dir);
+    streampos  tellp();
+
+    // Unformatted insertion operations
+    // 1st arg-char output, 2nd arg-number of chars written w/nulls
+    ostream  &  put(char);  // insert character
+    ostream  &  write(const   signed char  *, int); // insert string
+    ostream  &  write(const unsigned char  *, int); // insert string
+
+    // Formatted insertion operations
+    // insert the character
+    ostream  &  operator<< (  signed char);
+    ostream  &  operator<< (unsigned char);
+
+    // insert character representation of numeric value
+    ostream  &  operator<< (short);
+    ostream  &  operator<< (unsigned short);
+    ostream  &  operator<< (int);
+    ostream  &  operator<< (unsigned int);
+    ostream  &  operator<< (long);
+    ostream  &  operator<< (unsigned long);
+    ostream  &  operator<< (float);
+    ostream  &  operator<< (double);
+    ostream  &  operator<< (long double);
+
+    // insert the null-terminated string
+    ostream  &  operator<< (const   signed char  *);
+    ostream  &  operator<< (const unsigned char  *);
+
+    // insert character representation of the value of the pointer
+    ostream  &  operator<< (void  *);
+
+    // extract from streambuf, insert into this ostream
+    ostream  &  operator<< (streambuf  *);
+
+    // manipulators
+    ostream  &  operator<< (ostream  & ( *_f)(ostream  &));
+    ostream  &  operator<< (ios  & ( *_f)(ios  &));
+};
+/**/
+//----< iostream >---------------------------------------------
+
+class  iostream : public istream, public ostream {
+
+public:
+	 iostream(streambuf  *);
+virtual  ~iostream();
+
+};
+
+//----< istream_withassign >-----------------------------------
+
+class  istream_withassign : public istream {
+
+public:
+	// does no initialization
+	 istream_withassign();
+
+virtual  ~istream_withassign();
+
+    // gets buffer from istream and does entire initialization
+    istream_withassign  &  operator= (istream  &);
+
+    // associates streambuf with stream and does entire initialization
+    istream_withassign  &  operator= (streambuf  *);
+};
+
+//----< ostream_withassign >-----------------------------------
+
+class  ostream_withassign : public ostream {
+
+public:
+	// does no initialization
+	 ostream_withassign();
+
+virtual  ~ostream_withassign();
+
+    // gets buffer from istream and does entire initialization
+    ostream_withassign  &  operator= (ostream  &);
+
+    // associates streambuf with stream and does entire initialization
+    ostream_withassign  &  operator= (streambuf  *);
+};
+/**/
+//----< iostream_withassign >----------------------------------
+
+class  iostream_withassign : public iostream {
+
+public:
+	// does no initialization
+	 iostream_withassign();
+
+virtual  ~iostream_withassign();
+
+    // gets buffer from stream and does entire initialization
+    iostream_withassign  &  operator= (ios  &);
+
+    // associates streambuf with stream and does entire initialization
+    iostream_withassign  &  operator= (streambuf  *);
+};
+
+
+/*
+ * The predefined streams
+ */
+extern istream_withassign  cin;
+extern ostream_withassign  cout;
+extern ostream_withassign  cerr;
+extern ostream_withassign  clog;  // behaves like buffered cerr
+
+/*
+ * Manipulators
+ */
+
+ostream  &  endl(ostream  &); // insert newline and flush
+ostream  &  ends(ostream  &); // insert null to terminate string
+ostream  &  flush(ostream  &);// flush the ostream
+ios  &      dec(ios  &);      // set conversion base to decimal
+ios  &      hex(ios  &);      // set conversion base to hexadecimal
+ios  &      oct(ios  &);      // set conversion base to octal
+istream  &  ws(istream  &);   // extract whitespace characters

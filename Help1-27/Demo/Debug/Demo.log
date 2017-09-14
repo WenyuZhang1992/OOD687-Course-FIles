@@ -1,0 +1,4 @@
+﻿  Help.cpp
+\\mac\home\documents\visual studio 2015\projects\help1-27\strhelper.h(46): warning C4172: returning address of local variable or temporary
+  Demo.vcxproj -> \\Mac\Home\Documents\Visual Studio 2015\Projects\Help1-27\Debug\Demo.exe
+  Demo.vcxproj -> \\Mac\Home\Documents\Visual Studio 2015\Projects\Help1-27\Debug\Demo.pdb (Full PDB)

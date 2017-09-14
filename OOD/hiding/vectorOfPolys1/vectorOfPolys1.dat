@@ -1,0 +1,35 @@
+
+  Demonstrates Slicing with STL Containers
+ ==========================================
+
+  A Blob Speaking
+ -----------------
+  Hi: Charley here.
+
+  A verboseBlob Speaking
+ ------------------------
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+
+  Blobs Speaking from vector<Blob> Container
+ ============================================
+
+  Original Blob Order - where's verbousBlob?
+ --------------------------------------------
+  Hi: Charley here.
+  Hi: Joe here.
+  Hi: Frank here.
+
+  Sorted Blob Order - not here either!
+ --------------------------------------
+  Hi: Charley here.
+  Hi: Frank here.
+  Hi: Joe here.
+
+
+ ==========
+  Message:
+ ==========
+
+  Non-Polymorphic operation with container of objects.
+  Derived objects get sliced to base objects on copy in.
+

@@ -1,0 +1,4 @@
+﻿  FunctorsEtc.cpp
+FunctorsEtc.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  Functors.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\Functors-2\Debug\Functors.exe
+  Functors.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\Functors-2\Debug\Functors.pdb (Full PDB)

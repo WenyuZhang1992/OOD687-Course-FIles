@@ -1,0 +1,118 @@
+/////////////////////////////////////////////////////////////////
+//  ParamsDefaulted.cpp - demonstrate that virtual functions and
+//                        default parameters don't mix.
+//
+//  Default parameters are applied statically, so you get the
+//  default of the type of reference, not the type of object.
+//
+//  Jim Fawcett, CSE687 - Object Oriented Design, Spring 2003
+/////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+///////////////////////////////////////////////////////////
+//  base::defaults function call will be polymorphic
+//  - Application of default parameter is static
+//
+class base
+{
+public:
+  virtual ~base() {}
+  virtual void defaults(int i=12);
+  virtual base& id();
+};
+
+inline base& base::id()
+{
+  cout << endl << setw(30) << "  base object invoking:";
+  return *this;
+}
+
+inline void base::defaults(int i)
+{
+  cout << setw(30) << "  base::defaults(int i):" << "i = " << i;
+}
+
+//
+///////////////////////////////////////////////////////////
+//  derived1::defaults function call will be polymorphic
+//  - Application of default parameter is static
+//
+class derived : public base
+{
+public:
+  virtual void defaults(int i=10);
+  derived& id();
+};
+
+inline derived& derived::id()
+{
+  cout << endl << setw(30) << "  derived object invoking:";
+  return *this;
+}
+
+inline void derived::defaults(int i)
+{
+  cout << setw(30) << "  derived::defaults(int i):" << "i = " << i;
+}
+
+//
+const int UPPER = true;
+template <char ch>
+string title(const string &t,bool upper=false)
+{
+  string underline(t.length()+2,ch);
+  string temp;
+  if(upper)
+    temp = string("\n ") + underline + string("\n  ");
+  else
+    temp = string("\n  ");
+  return temp + t + string("\n ") + underline;
+}
+
+int main()
+{
+  cout << 
+    title<'='>("Problems Mixing Virtual Functions and Default Parameters");
+
+  cout.setf(ios::left,ios::adjustfield);
+  base b;
+  b.id().defaults();
+
+  derived d;
+  d.id().defaults();
+
+  base& polyRef = d;
+  polyRef.id().defaults();  // defaults are not polymorphic
+
+  cout << endl << 
+    "\n  We get one behavior if we use derived object: default to 10";
+  cout << 
+    "\n  Different behavior using base ref to derived object: default to 12";
+  cout << endl <<
+    title<'='>("Message: don't give virtual functions default parameters",UPPER);
+  
+  cout << "\n\n";
+}
+
+///////////////////////////////////////////////////////////////
+//  The Message:
+//    Don't use default parameters with virtual functions
+//
+
+  Problems Mixing Virtual Functions and Default Parameters
+ ==========================================================
+  base object invoking:         base::defaults(int i):      i = 12
+  derived object invoking:      derived::defaults(int i):   i = 10
+  derived object invoking:      derived::defaults(int i):   i = 12
+
+  We get one behavior if we use derived object: default to 10
+  Different behavior using base ref to derived object: default to 12
+
+ ==========================================================
+  Message: don't give virtual functions default parameters
+ ==========================================================
+

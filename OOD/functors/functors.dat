@@ -1,0 +1,39 @@
+
+  Demonstrating Function Pointers 
+ =================================
+
+  using pointer to random fill function
+   175 178 778 728 391  64 966 288 368  90
+
+  using pointer to sequential fill function
+     0   1   2   3   4   5   6   7   8   9
+
+  Demonstrating Functors 
+ ========================
+
+  First, a simple functor to compute a product: 
+ -----------------------------------------------
+  product of 2.5 and 3 is 7.5
+    product returned = 7.5
+
+  Second, a functor to compare two values: 
+ ------------------------------------------
+  2 is "less than" 3.14159
+  2 is "less than or equal to" 3.14159
+  2 is not "equal to" 3.14159
+  2 is "not equal to" 3.14159
+  2 is not "greater than or equal to" 3.14159
+  2 is not "greater than" 3.14159
+
+  Here we use the compare functor to sort: 
+ ------------------------------------------
+
+  a random set of integers in [0,999]
+   175 178 778 728 391  64 966 288 368  90
+
+  after sorting in ascending order with compFunct::lt
+    64  90 175 178 288 368 391 728 778 966
+
+  after sorting in descending order with compFunct::gt
+   966 778 728 391 368 288 178 175  90  64
+

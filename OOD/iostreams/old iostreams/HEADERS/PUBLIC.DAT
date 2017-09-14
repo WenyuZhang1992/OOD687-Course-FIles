@@ -1,0 +1,82 @@
+File IOS.H:
+public:
+public:
+File ISTREAM.H:
+class _CRTIMP istream : virtual public ios {
+public:
+class _CRTIMP istream_withassign : public istream {
+        public:
+File OSTREAM.H:
+class _CRTIMP ostream : virtual public ios {
+public:
+class _CRTIMP ostream_withassign : public ostream {
+        public:
+File STREAMB.H:
+public:
+File IOS:
+	class basic_ios : public ios_base {
+public:
+File IOSTREAM:
+public:
+File IOSTREAM.H:
+class _CRTIMP iostream : public istream, public ostream {
+public:
+public:
+File ISTREAM:
+	class basic_istream : virtual public basic_ios<_E, _Tr> {
+public:
+	public:
+	class basic_iostream : public basic_istream<_E, _Tr>,
+		public basic_ostream<_E, _Tr> {
+public:
+File OSTREAM:
+	class basic_ostream : virtual public basic_ios<_E, _Tr> {
+public:
+	public:
+File streambuf:
+public:
+File IOMANIP.H:
+public: \
+public: \
+public: \
+public: \
+public: \
+public: \
+public: \
+public: \
+File strstream:
+class strstreambuf : public streambuf {
+public:
+class istrstream : public istream {
+public:
+class ostrstream : public ostream {
+public:
+class strstream : public iostream {
+public:
+File STRSTREA.H:
+class _CRTIMP strstreambuf : public streambuf  {
+public:
+class _CRTIMP istrstream : public istream {
+public:
+class _CRTIMP ostrstream : public ostream {
+public:
+class _CRTIMP strstream : public iostream {    // strstreambase ???
+public:
+File FSTREAM:
+	class basic_filebuf : public basic_streambuf<_E, _Tr> {
+public:
+	class basic_ifstream : public basic_istream<_E, _Tr> {
+public:
+	class basic_ofstream : public basic_ostream<_E, _Tr> {
+public:
+	class basic_fstream : public basic_iostream<_E, _Tr> {
+public:
+File FSTREAM.H:
+class _CRTIMP filebuf : public streambuf {
+public:
+class _CRTIMP ifstream : public istream {
+public:
+class _CRTIMP ofstream : public ostream {
+public:
+class _CRTIMP fstream : public iostream {
+public:

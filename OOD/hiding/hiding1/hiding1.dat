@@ -1,0 +1,24 @@
+
+  Problems trying to Overload Base Functions in Derived Class
+ =============================================================
+  base object invoking:         base::process(int i):       i = 3
+  base object invoking:         base::process(double d):    d = 3.5
+
+  derived1 object invoking:     derived1::process()         
+
+  derived2 object invoking:     base::process(int i):       i = 3
+  derived2 object invoking:     base::process(double d):    d = 3.5
+
+  base provides non-virtual functions process(int) & process(double)
+
+  derived1 attempts to provide overload process()
+  which hides base process functions
+  so derived1 can't call base process functions - won't compile
+
+  derived2 did not attempt to overload process 
+  so can call base process functions
+
+ ====================================================================
+  Message: don't attempt to overload base functions in derived class
+ ====================================================================
+

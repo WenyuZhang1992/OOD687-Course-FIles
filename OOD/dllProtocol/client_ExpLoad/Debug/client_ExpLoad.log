@@ -1,0 +1,4 @@
+﻿  client_ExpLoad.cpp
+client_ExpLoad.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  client_ExpLoad.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\dllProtocol\Debug\client_ExpLoad.exe
+  client_ExpLoad.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\dllProtocol\Debug\client_ExpLoad.pdb (Full PDB)

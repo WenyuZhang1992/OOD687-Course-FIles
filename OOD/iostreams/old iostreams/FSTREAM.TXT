@@ -1,0 +1,137 @@
+/*  fstream.h -- class filebuf and fstream declarations
+
+    Copyright (c) 1990, 1991 by Borland International
+    All rights reserved
+
+
+//----< filebuf >----------------------------------------------
+//                 adds file handling to streambuf
+
+class   filebuf : public streambuf {
+
+public:
+
+static const int openprot;  // default file protection
+  // 0-default val, 1-read only file, 2-hidden file,
+  // 4-system file, 8-archive bit set
+
+    // constructors, destructor
+     filebuf();                     // make a closed filebuf
+     filebuf(int);                  // make a filebuf attached to fd
+     filebuf(int _f, char  *, int); // same, with specified buffer
+     ~filebuf();
+
+    int  is_open();   // is the file open
+    int  fd();        // what is the file descriptor
+
+    // open named file with mode & protection, attach to this filebuf
+    // 1st arg-buffer, 2nd arg-ios open_mode,
+    filebuf  *  open( const char  *, int,
+				int = filebuf::openprot );
+
+    filebuf  *  close();      // flush and close file
+    filebuf  *  attach(int);  // attach this filebuf to opened
+					// file descriptor
+
+/*
+ * These perform the streambuf functions on a filebuf
+ * Get and Put pointers are kept together
+ */
+virtual int  overflow(int = EOF);
+virtual int  underflow();
+virtual int  sync();
+virtual streampos   seekoff(streamoff, ios::seek_dir, int);
+virtual streambuf  *  setbuf(char  *, int);
+
+};
+/**/
+//----< fstreambase >------------------------------------------
+//                     base for file stream classes
+
+class  fstreambase : virtual public ios {
+
+public:
+
+     fstreambase();
+     fstreambase(const char  *, int, int = filebuf::openprot);
+     fstreambase(int);
+     fstreambase(int _f, char  *, int);
+     ~fstreambase();
+
+    // 1st arg-file name, 2nd arg-ios mode, 3rd arg-select code
+    void     open(const char  *, int, int = filebuf::openprot);
+    // attaches closed filebuf to opened file descriptor
+    void     attach(int fd);
+    // flush buffer and close file
+    void     close();
+    // specify buffer for this filebuf
+    void     setbuf(char  *, int sz);
+    // return pointer to filebuf's buffer
+    filebuf  *  rdbuf();
+
+};
+
+//----< ifstream >---------------------------------------------
+//                  provides input operations on a filebuf
+
+class  ifstream : public fstreambase, public istream {
+
+public:
+
+     ifstream();        // make ifstream not attached to file
+     ifstream(const char  *,int = ios::in,int = filebuf::openprot);
+     ifstream(int fd);  // make ifstream connected to filedescriptor
+     // 1st arg-filedescriptor, 2nd arg-specified buffer,
+     // 3rd arg-buffer length
+     ifstream(int _f, char  *, int);
+     ~ifstream();
+
+    filebuf  *  rdbuf();  // return pointer to ifstream's buffer
+    // opens file for this ifstream
+    void     open(const char  *filename, int = ios::in,
+			int = filebuf::openprot);
+};
+/**/
+//----< ofstream >---------------------------------------------
+//                  provides output operations on a filebuf
+
+class  ofstream : public fstreambase, public ostream {
+
+public:
+
+     ofstream();  // makes ofstream not attached to file
+     ofstream(const char  *filename, int = ios::out,
+		    int = filebuf::openprot);
+     // makes ofstream, connects to filedescriptor
+     ofstream(int fd);
+     // 1st arg-filedescriptor, 2nd arg-ptr to buffer,
+     // 3rd arg-buffer size
+     ofstream(int _f, char  *, int);
+     ~ofstream();
+
+    filebuf  *  rdbuf();  // returns ptr to ofstream's buffer
+    void     open(const char  *filename, int = ios::out,
+			int = filebuf::openprot);
+};
+
+//----< fstream >----------------------------------------------
+//                 provides simultaneous input and output
+//                 on a filebuf
+
+class  fstream : public fstreambase, public iostream {
+
+public:
+
+     fstream();
+     // 1st arg-filename, 2nd arg-ios mode, 3rd arg-see filebuf
+     fstream(const char  *, int, int = filebuf::openprot);
+     fstream(int fd);  // connects to open filedescriptor
+     // 1st arg-filedescriptor, 2nd arg-ptr to buffer,
+     // 3rd arg-buffer size
+     fstream(int _f, char  *, int);
+     ~fstream();
+
+    filebuf  *  rdbuf();   // return ptr to fstream's buffer
+    // 1st arg-filename, 2nd arg-ios mode, 3rd arg-see filebuf
+    void     open(const char  *, int, int = filebuf::openprot);
+};

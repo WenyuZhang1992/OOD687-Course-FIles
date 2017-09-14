@@ -1,0 +1,12 @@
+
+  Demonstrating the Non-Virtual Interface Pattern
+ =================================================
+
+  doing something by calling private virtual functions
+  doing base first thing
+  doing base second thing
+
+  doing something by calling private virtual functions
+  doing derived first thing
+  doing derived second thing
+

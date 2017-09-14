@@ -1,0 +1,21 @@
+
+  Demonstrate Simplest STL vector operations 
+ ============================================
+
+
+ ----------------------------
+  define a vector of strings 
+ ----------------------------
+
+  first string
+  second string
+  third string
+
+ ----------------------------
+  define a vector of doubles 
+ ----------------------------
+
+  3.14159
+  -3.5e-017
+  5.777e+030
+

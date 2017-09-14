@@ -1,0 +1,7 @@
+﻿  XmlDocument.cpp
+  XmlParser.cpp
+  XmlElement.cpp
+  xmlElementParts.cpp
+  Tokenizer.cpp
+  Generating Code...
+  XmlDocument.vcxproj -> \\Mac\Home\Documents\Visual Studio 2015\Projects\Help1-27\Debug\XmlDocument.lib

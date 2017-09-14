@@ -1,0 +1,14 @@
+
+  Problems Mixing Virtual Functions and Default Parameters
+ ==========================================================
+  base object invoking:         base::defaults(int i):      i = 12
+  derived object invoking:      derived::defaults(int i):   i = 10
+  derived object invoking:      derived::defaults(int i):   i = 12
+
+  We get one behavior if we use derived object: default to 10
+  Different behavior using base ref to derived object: default to 12
+
+ ==========================================================
+  Message: don't give virtual functions default parameters
+ ==========================================================
+

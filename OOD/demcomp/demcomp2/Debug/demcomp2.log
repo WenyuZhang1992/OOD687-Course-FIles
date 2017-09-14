@@ -1,0 +1,4 @@
+﻿  dem_comp2.cpp
+dem_comp2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  demcomp2.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\demcomp\demcomp2\Debug\demcomp2.exe
+  demcomp2.vcxproj -> Debug\demcomp2.pdb (Full PDB)

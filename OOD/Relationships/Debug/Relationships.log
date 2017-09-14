@@ -1,0 +1,5 @@
+﻿  stdafx.cpp
+  Relationships.cpp
+Relationships.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  Relationships.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\Relationships\Debug\Relationships.exe
+  Relationships.vcxproj -> Debug\Relationships.pdb (Full PDB)

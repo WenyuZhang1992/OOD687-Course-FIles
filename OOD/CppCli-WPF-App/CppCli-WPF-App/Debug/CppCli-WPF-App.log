@@ -1,0 +1,4 @@
+﻿  Window.cpp
+.NETFramework,Version=v4.0.AssemblyAttributes.obj : warning LNK4099: PDB 'vc140.pdb' was not found with '.NETFramework,Version=v4.0.AssemblyAttributes.obj' or at '\\Mac\Home\Documents\Visual Studio 2015\Projects\OOD\CppCli-WPF-App\Debug\vc140.pdb'; linking object as if no debug info
+  CppCli-WPF-App.vcxproj -> \\Mac\Home\Documents\Visual Studio 2015\Projects\OOD\CppCli-WPF-App\Debug\CppCli-WPF-App.exe
+  CppCli-WPF-App.vcxproj -> \\Mac\Home\Documents\Visual Studio 2015\Projects\OOD\CppCli-WPF-App\Debug\CppCli-WPF-App.pdb (Full PDB)

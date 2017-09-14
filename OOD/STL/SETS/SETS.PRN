@@ -1,0 +1,204 @@
+///////////////////////////////////////////////////////////////
+//  sets.cpp - demonstrate basic set operations              //
+//                                                           //
+//  Jim Fawcett, ECS500 instructor, Su'99                    //
+///////////////////////////////////////////////////////////////
+//  STL sets are sorted associative containers               //
+//  By default they sort on operator<(...) for the set       //
+//  element type.  You can change that by using a predicate  //
+//  function during construction (see use of greater<>() for //
+//  set down, shown below).                                  //
+//                                                           //
+//  STL sets are implemented with red-black binary trees     //
+//  This implies that for large sets:                        //
+//    - finding any element is fast (binary search)          //
+//    - inserting an element is fast                         //
+//    - deleting an element is fast                          //
+///////////////////////////////////////////////////////////////
+
+#pragma warning(disable : 4786)
+#include <set>
+#include <iterator>
+#include <string>
+#include <iostream>
+using namespace std;
+
+//----< generic function to display container contents >-------
+
+template <class T>
+void showCont(const T &cont) {
+  cout << "  size of container = " << cont.size() << endl;
+  T::const_iterator it;
+  for(it = cont.begin(); it != cont.end(); it++)
+    cout << "    " << *it << endl;
+}
+
+//----< demonstrate set capabilities >-------------------------
+
+void main() {
+
+  cout << "\n  Demonstrate basic STL Set operations "
+       << "\n ======================================\n\n";
+  cout << "\n -------------------------"
+       << "\n  define a set of strings "
+       << "\n -------------------------\n";
+  set<string> up;
+  up.insert("first string");
+  up.insert("second string");
+  up.insert("third string");
+  showCont< set<string> >(up);
+
+  cout << "\n --------------------------------------"
+       << "\n  define a new set with reversed order "
+       << "\n --------------------------------------\n";
+  set< string, greater<string> > down;
+  down.insert("first string");
+  down.insert("second string");
+  down.insert("third string");
+  showCont(down);    // note the alternate notation
+//
+  cout << "\n ---------------------------------------"
+       << "\n  define a set from an array of strings "
+       << "\n ---------------------------------------\n";
+  string sArr[5] = { "one", "two", "three", "four", "five" };
+  set<string> fromArr(&sArr[0],&sArr[5]);
+  showCont(fromArr);
+  cout << endl;
+
+  cout << "\n ----------------------------"
+       << "\n  demonstrate erasing by key "
+       << "\n ----------------------------\n";
+  cout << "  key = \"one\"\n";
+  fromArr.erase("one");
+  showCont(fromArr);
+
+  cout << "\n -----------------------------"
+       << "\n  demonstrate erasing a range "
+       << "\n -----------------------------\n";
+  set<string>::iterator it1, it2;
+  it1 = fromArr.begin();
+  it2 = fromArr.end();
+  --it2; --it2;
+  cout << "  range = [\"" << *it1 << "\", \"" << *it2 << "\")\n";
+  fromArr.erase(it1,it2);
+  showCont(fromArr);
+
+  cout << "\f\n"
+       << "\n ----------------------------------------------"
+       << "\n  demonstrate multiset construction from array "
+       << "\n ----------------------------------------------\n";
+  int intArr[7] = { 1, 2, 3, 4, 5, 4, 3 };
+  multiset<int> msoi(&intArr[0], &intArr[7]);
+  showCont(msoi);
+
+  cout << "\n ----------------------------------"
+       << "\n  count number of keys in mulitset "
+       << "\n ----------------------------------\n";
+  multiset<int>::iterator msit = msoi.begin();
+  do {
+    cout << "  key = " << *msit 
+         << ", count = " << msoi.count(*msit) << '\n';
+  } while(++msit != msoi.end());
+  cout << "\n";
+
+  cout << "\n ----------------------------"
+       << "\n  find element in a multiset "
+       << "\n ----------------------------";
+  cout << "\n  find first element with value = 3"
+       << "\n  then create a new sequence consisting"
+       << "\n  of elements that follow.\n";
+  multiset<int> newSet;
+  msit = msoi.find(3);
+  ++msit;
+  while(msit != msoi.end())
+    newSet.insert(*msit++);
+  showCont(newSet);
+  cout << endl;
+}
+
+  Demonstrate basic STL Set operations 
+ ======================================
+
+
+ -------------------------
+  define a set of strings 
+ -------------------------
+  size of container = 3
+    first string
+    second string
+    third string
+
+ --------------------------------------
+  define a new set with reversed order 
+ --------------------------------------
+  size of container = 3
+    third string
+    second string
+    first string
+
+ ---------------------------------------
+  define a set from an array of strings 
+ ---------------------------------------
+  size of container = 5
+    five
+    four
+    one
+    three
+    two
+
+
+ ----------------------------
+  demonstrate erasing by key 
+ ----------------------------
+  key = "one"
+  size of container = 4
+    five
+    four
+    three
+    two
+
+ -----------------------------
+  demonstrate erasing a range 
+ -----------------------------
+  range = ["five", "three")
+  size of container = 2
+    three
+    two
+
+
+ ----------------------------------------------
+  demonstrate multiset construction from array 
+ ----------------------------------------------
+  size of container = 7
+    1
+    2
+    3
+    3
+    4
+    4
+    5
+
+ ----------------------------------
+  count number of keys in mulitset 
+ ----------------------------------
+  key = 1, count = 1
+  key = 2, count = 1
+  key = 3, count = 2
+  key = 3, count = 2
+  key = 4, count = 2
+  key = 4, count = 2
+  key = 5, count = 1
+
+
+ ----------------------------
+  find element in a multiset 
+ ----------------------------
+  find first element with value = 3
+  then create a new sequence consisting
+  of elements that follow.
+  size of container = 4
+    3
+    4
+    4
+    5
+

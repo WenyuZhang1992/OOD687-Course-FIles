@@ -1,0 +1,24 @@
+
+  Avoid Slicing by Holding Pointers to Blobs
+ ============================================
+
+  Original Blob Order - here's verbousBlob!
+ -------------------------------------------
+  Hi: Charley here.
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+  Hi: Frank here.
+
+  Sorted Blob Order - still here!
+ ---------------------------------
+  Hi: Charley here.
+  Hi: Frank here.
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+
+
+ ==========
+  Message:
+ ==========
+
+  Polymorphic operation with container of pointers
+  but requires client to participate in memory management
+

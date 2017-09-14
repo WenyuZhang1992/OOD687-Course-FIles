@@ -1,0 +1,4 @@
+﻿  basics.cpp
+basics.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  basics.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\VirtualFunctionErrors\Debug\basics.exe
+  basics.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\VirtualFunctionErrors\Debug\basics.pdb (Full PDB)

@@ -1,0 +1,49 @@
+
+  Demonstrate basic STL List operations 
+ =======================================
+
+
+  define a list of strings 
+ --------------------------
+  size of container = 3
+    first string
+    second string
+    third string
+
+ ---------------------------------------
+  define a new list with reversed order 
+ ---------------------------------------
+  size of container = 3
+    third string
+    second string
+    first string
+
+ ---------------------------------------
+  define a list from an array of strings 
+ ---------------------------------------
+  size of container = 5
+    one
+    two
+    three
+    four
+    five
+
+
+ ---------------------------------------
+  demonstrate finding and erasing 
+ ---------------------------------
+  value = "three"
+  size of container = 4
+    one
+    two
+    four
+    five
+
+ ---------------------------------------
+  demonstrate erasing a range 
+ -----------------------------
+  range = ["one", "four")
+  size of container = 2
+    four
+    five
+

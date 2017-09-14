@@ -1,0 +1,25 @@
+
+
+====< reading from string >====
+
+  15 3.1415927 Now is the hour
+
+
+====< writing to internal buffer >====
+
+  15 3.1415927 Now is the hour
+
+
+====< writing to custom buffer >====
+
+  15 3.1415927 Now is the hour
+
+====< parsing input buffer >====
+
+  i = 15
+  d = 3.14159
+  savebuf = Now
+  savebuf = is
+  savebuf = the
+  savebuf = hour
+  savebuf = 

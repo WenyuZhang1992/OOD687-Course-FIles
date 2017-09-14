@@ -1,0 +1,87 @@
+
+  Demonstrate basic STL Set operations 
+ ======================================
+
+
+ -------------------------
+  define a set of strings 
+ -------------------------
+  size of container = 3
+    first string
+    second string
+    third string
+
+ --------------------------------------
+  define a new set with reversed order 
+ --------------------------------------
+  size of container = 3
+    third string
+    second string
+    first string
+
+ ---------------------------------------
+  define a set from an array of strings 
+ ---------------------------------------
+  size of container = 5
+    five
+    four
+    one
+    three
+    two
+
+
+ ----------------------------
+  demonstrate erasing by key 
+ ----------------------------
+  key = "one"
+  size of container = 4
+    five
+    four
+    three
+    two
+
+ -----------------------------
+  demonstrate erasing a range 
+ -----------------------------
+  range = ["five", "three")
+  size of container = 2
+    three
+    two
+
+
+ ----------------------------------------------
+  demonstrate multiset construction from array 
+ ----------------------------------------------
+  size of container = 7
+    1
+    2
+    3
+    3
+    4
+    4
+    5
+
+ ----------------------------------
+  count number of keys in mulitset 
+ ----------------------------------
+  key = 1, count = 1
+  key = 2, count = 1
+  key = 3, count = 2
+  key = 3, count = 2
+  key = 4, count = 2
+  key = 4, count = 2
+  key = 5, count = 1
+
+
+ ----------------------------
+  find element in a multiset 
+ ----------------------------
+  find first element with value = 3
+  then create a new sequence consisting
+  of elements that follow.
+  size of container = 4
+    3
+    4
+    4
+    5
+

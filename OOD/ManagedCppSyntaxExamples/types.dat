@@ -1,0 +1,19 @@
+
+  Demonstrating Type Queries in Managed C++
+ ===========================================
+
+  fred is not an integer
+  10 is an integer
+  Type name = CApp
+  full name = types.CApp
+  namesapce = types
+  module    = types.exe
+  Type name = String[]
+  full name = System.String[]
+  namesapce = System
+  module    = CommonLanguageRuntimeLibrary
+  Type name = Int32
+  full name = System.Int32
+  namesapce = System
+  module    = CommonLanguageRuntimeLibrary
+

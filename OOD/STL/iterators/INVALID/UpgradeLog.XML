@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="INVALID">
+</Property><Property Name="Solution File" Value="C:\su\CSE687\code\STL\iterators\INVALID\INVALID.sln">
+</Property><Property Name="User Options File" Value="C:\su\CSE687\code\STL\iterators\INVALID\INVALID.suo">
+</Property><Property Name="Date" Value="Saturday, February 27, 2010">
+</Property><Property Name="Time" Value="8:35 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="INVALID.sln" Description="File successfully backed up as C:\su\CSE687\code\STL\iterators\INVALID\INVALID.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="INVALID.suo" Description="File successfully backed up as C:\su\CSE687\code\STL\iterators\INVALID\INVALID.suo.old">
+</Event><Event ErrorLevel="0" Project="remove0" Source="remove0.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="remove0" Source="remove0.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="remove0" Source="remove0.vcproj" Description="Project file successfully backed up as 'C:\su\CSE687\code\STL\iterators\INVALID\remove0.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="remove0" Source="remove0.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="remove0" Source="remove0.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="remove1" Source="remove1.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="remove1" Source="remove1.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="remove1" Source="remove1.vcproj" Description="Project file successfully backed up as 'C:\su\CSE687\code\STL\iterators\INVALID\remove1.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="remove1" Source="remove1.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="remove1" Source="remove1.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="remove2" Source="remove2.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="remove2" Source="remove2.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="remove2" Source="remove2.vcproj" Description="Project file successfully backed up as 'C:\su\CSE687\code\STL\iterators\INVALID\remove2.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="remove2" Source="remove2.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="remove2" Source="remove2.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="remove3" Source="remove3.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="remove3" Source="remove3.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="remove3" Source="remove3.vcproj" Description="Project file successfully backed up as 'C:\su\CSE687\code\STL\iterators\INVALID\remove3.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="remove3" Source="remove3.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="remove3" Source="remove3.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="remove4" Source="remove4.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="remove4" Source="remove4.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="remove4" Source="remove4.vcproj" Description="Project file successfully backed up as 'C:\su\CSE687\code\STL\iterators\INVALID\remove4.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="remove4" Source="remove4.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="remove4" Source="remove4.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="INVALID.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="INVALID.sln" Description="Converted">
+</Event></UpgradeLog>

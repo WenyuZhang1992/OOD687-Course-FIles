@@ -1,0 +1,35 @@
+/*  iomanip.h -- streams I/O manipulator declarations
+
+    Copyright (c) 1990, 1991 by Borland International
+    All rights reserved
+
+
+// set the conversion base to 0, 8, 10, or 16
+smanip_int        setbase(int _b);
+
+// clear the flags bitvector according to the bits set in b
+smanip_long       resetiosflags(long _b);
+
+// set the flags bitvector according to the bits set in b
+smanip_long       setiosflags(long _b);
+
+// set fill character for padding a field
+smanip_int        setfill(int _f);
+
+// set the floating-point precision to n digits
+smanip_int        setprecision(int _n);
+
+// set the field width to n
+smanip_int        setw(int _n);
+
+/*
+ * Manipulators declared in iostream.h
+ */
+
+ostream  &  endl(ostream  &); // insert newline and flush
+ostream  &  ends(ostream  &); // insert null to terminate string
+ostream  &  flush(ostream  &);// flush the ostream
+ios  &      dec(ios  &);      // set conversion base to decimal
+ios  &      hex(ios  &);      // set conversion base to hexadecimal
+ios  &      oct(ios  &);      // set conversion base to octal
+istream  &  ws(istream  &);   // extract whitespace characters

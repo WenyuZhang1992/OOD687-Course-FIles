@@ -1,0 +1,7 @@
+
+  Demonstrating Indexers in Managed C++
+ =======================================
+
+  creature["falcon"] is bird
+  creature["falcon"] is bird of prey
+

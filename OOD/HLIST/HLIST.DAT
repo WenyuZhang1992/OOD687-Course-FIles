@@ -1,0 +1,20 @@
+
+  testing heterogeneous list 
+ ============================
+
+items speaking:
+  I'm an apple
+  I'm an orange
+
+heterogeneous list elements speaking polymorphically:
+  I'm an apple
+  I'm an orange
+  I'm an apple
+  I'm an orange
+
+assigning an apple wrapping HItem to an apple:   I'm an apple
+
+assigning an apple wrapping HItem to an orange: 
+caught this exception:
+  "attempt to cast a non-orange HItem into an orange"
+

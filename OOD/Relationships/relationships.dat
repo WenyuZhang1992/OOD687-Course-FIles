@@ -1,0 +1,30 @@
+
+  Demonstrating Class Relationships 
+ ===================================
+
+  Composed object speaking......My value is 1
+
+  Base object speaking..........My value is 0
+
+  Derived object speaking.......My value is -1
+
+  Used object speaking..........My value is "a U-held string"
+
+  Derived object speaking.......My value is -2
+  D Used object speaking:.......My value is "another U-held string"
+
+
+  These are d's parts:
+
+  location of d is from: 1244952 to: 1244964, size of d is: 12
+  location of b is from: 1244952 to: 1244960, size of b is: 8
+  location of c is from: 1244956 to: 1244960, size of c is: 4
+  location of u is from: 1244912 to: 1244944, size of u is: 32
+
+  or, if you like hexidecimal:
+
+  location of d is from: 12ff18 to: 12ff24, size of d is: c
+  location of b is from: 12ff18 to: 12ff20, size of b is: 8
+  location of c is from: 12ff1c to: 12ff20, size of c is: 4
+  location of u is from: 12fef0 to: 12ff10, size of u is: 20
+

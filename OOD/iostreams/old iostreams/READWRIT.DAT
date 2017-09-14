@@ -1,0 +1,19 @@
+
+this is a test file for reading and writing:
+============================================
+this is the first line
+second line
+third line
+fourth line
+fifth line
+this is the sixth and final line
+
+modified file:
+==============
+this overwrites first
+
+second line
+third line
+fourth line
+fifth line
+this is the sixth and final linethis line is added to the end

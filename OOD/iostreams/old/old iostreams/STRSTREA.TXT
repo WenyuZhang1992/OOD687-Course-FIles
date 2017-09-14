@@ -1,0 +1,79 @@
+/*  strstream.h -- class strstream declarations
+
+    Copyright (c) 1990, 1991 by Borland International
+    All rights reserved
+
+
+//----< strstreambuf >-----------------------------------------
+
+class  strstreambuf : public streambuf {
+
+public:
+
+     strstreambuf();
+     strstreambuf(int n);
+     strstreambuf(void  * (*a)(long), void (*f)(void  *));
+     strstreambuf( signed char  * _s, int,
+			 signed char  * _strt=0);
+     strstreambuf( unsigned char  * _s, int,
+			 unsigned char  * _strt=0);
+     ~strstreambuf();
+
+    void     freeze(int = 1);
+    char  *  str();
+virtual int  doallocate();
+virtual int  overflow(int);
+virtual int  underflow();
+virtual int  sync();
+virtual streambuf  *  setbuf(char  *, int);
+virtual streampos   seekoff(streamoff, ios::seek_dir, int);
+
+};
+
+//----< strstreambase >----------------------------------------
+
+class  strstreambase : public virtual ios {
+
+public:
+
+    strstreambuf  *  rdbuf();
+
+};
+
+//----< istrstream >-------------------------------------------
+
+class  istrstream : public strstreambase, public istream {
+
+public:
+
+	 istrstream(char  *);
+	 istrstream(char  *, int);
+	 ~istrstream();
+};
+/**/
+//----< ostrstream >-------------------------------------------
+
+class  ostrstream : public strstreambase, public ostream {
+
+public:
+
+	 ostrstream(char  *, int, int = ios::out);
+	 ostrstream();
+	 ~ostrstream();
+
+    char  *  str();
+    int      pcount();
+};
+
+//----< strstream >--------------------------------------------
+
+class  strstream : public strstreambase, public iostream {
+
+public:
+
+	 strstream();
+	 strstream(char  *, int _sz, int _m);
+	 ~strstream();
+
+    char  *  str();
+};

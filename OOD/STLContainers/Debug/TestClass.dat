@@ -1,0 +1,82 @@
+
+  Demonstrate Test Class
+ ------------------------
+  named construction of Fred
+  copy of Fred
+  void construction of Test
+  move of function demo
+  destruction of been moved
+  void construction of Test
+  copy assignment of Test
+  void construction of Test
+  move assignment of copy of Fred
+  destruction of been moved
+
+  Creating initialized std::vector of Tests
+ -------------------------------------------
+  copy of t1
+  copy of t2
+  move of t3
+  copy of copy of t1
+  copy of copy of t2
+  copy of move of t3
+  destruction of move of t3
+  destruction of copy of t2
+  destruction of copy of t1
+  my name is copy of t1
+  my name is copy of t2
+  my name is copy of move of t3
+
+  Testing push_backs
+ --------------------
+  named construction of t4
+  named construction of t5
+  move of copy of t1
+  move of copy of t2
+  move of copy of move of t3
+  destruction of been moved
+  destruction of been moved
+  destruction of been moved
+  copy of t4
+  move of move of copy of t1
+  move of move of copy of t2
+  move of move of copy of move of t3
+  move of copy of t4
+  destruction of been moved
+  destruction of been moved
+  destruction of been moved
+  destruction of been moved
+  move of t5
+  my name is move of copy of t1
+  my name is move of copy of t2
+  my name is move of copy of move of t3
+  my name is move of copy of t4
+  my name is move of t5
+
+  Creating vector of smart pointers
+ -----------------------------------
+  named construction of t6
+  named construction of t7
+  named construction of t8
+  named construction of t9
+  destruction of t8
+  my name is t6
+  my name is t7
+
+  Done with testing
+ -------------------
+  destruction of t6
+  destruction of t7
+  destruction of t9
+  destruction of been moved
+  destruction of t4
+  destruction of move of copy of t1
+  destruction of move of copy of t2
+  destruction of move of copy of move of t3
+  destruction of move of copy of t4
+  destruction of move of t5
+  destruction of been moved
+  destruction of t2
+  destruction of t1
+  destruction of Fred
+

@@ -1,0 +1,8 @@
+﻿  StringClient.cpp
+  Utilities.cpp
+  Sockets.cpp
+  Logger.cpp
+  Cpp11-BlockingQueue.cpp
+  Generating Code...
+  StringClient.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\StringSocketServer\Debug\StringClient.exe
+  StringClient.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\StringSocketServer\Debug\StringClient.pdb (Full PDB)

@@ -1,0 +1,88 @@
+///////////////////////////////////////////////////////////////
+// filebuf.cpp                                               //
+//   demonstrate low level input and output using filebufs   //
+//   built from FILE pointer and stdout                      //
+//                                                           //
+// Jim Fawcett, 24 Mar 96, modified 23 Mar 97                //
+///////////////////////////////////////////////////////////////
+
+#include <iostream.h>    // cout, <<
+#include <fstream.h>     // ifstream(), <<, >>
+
+// note:  will not compile with the modern version given below
+//        I believe that is a defect with VC 6.0 fstream
+//
+// #include <iostream>
+// #include <fstream>
+// using namespace std;
+
+#include <cstdlib>       // exit(1);
+#include <cstdio>        // fopen(), FILE
+
+void main(int argc, char *argv[]) {
+
+  if(argc < 2) {
+    cout << "\nplease enter name of text file on command line\n";
+    exit(1);
+  }
+  cout << "\n====< using custom buffer for input from file >====\n"
+       << endl;
+
+  FILE *fptr = fopen(argv[argc-1],"r");
+  if(!fptr) {
+    cout << "can't open file " << argv[argc-1] << endl;
+    exit(1);
+  }
+
+// build an input filebuf using custom input buffer and
+// file opened with stdio::fopen()
+
+  const int bufSize = 256;
+  char inbuf[bufSize];               // make custom buffer
+  int handle = fileno(fptr);         // get file handle for filebuf
+  filebuf ifb(handle,inbuf,bufSize); // construct filebuf
+  cout << &ifb;                      // stream to cout
+  cout.flush();
+
+// build an output filebuf using custom output buffer and
+// stdio::stdout then attach to stream and fill from
+// input buffer defined above
+
+  cout << "\n\n====< using custom buffer for stdout >====\n"
+       << endl;
+  char outbuf[bufSize];              // custom buffer
+  filebuf ofb(1,outbuf,bufSize);     // attach to stdout (handle=1)
+  ostream out(&ofb);                 // now attach buffer to stream
+  ifb.seekpos(0, ios::in);           // move to top of input buffer
+  out << &ifb;                       // stream it to the output
+//
+
+// could replace last statement with the lower level
+// gets and puts shown below
+
+// char ch;
+// while((ch = ifb.sbumpc()) != EOF)
+//   ofb.sputc(ch);
+
+}
+
+
+
+
+====< using custom buffer for input from file >====
+
+this is the first line
+second line
+third line
+fourth line
+fifth line
+this is the sixth and final line
+
+====< using custom buffer for stdout >====
+
+this is the first line
+second line
+third line
+fourth line
+fifth line
+this is the sixth and final line

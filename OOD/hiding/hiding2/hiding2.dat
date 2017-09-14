@@ -1,0 +1,16 @@
+
+  Problems Mixing Overloading and Overriding
+ ============================================
+  base object invoking:         base::process(int i):       i = 3
+  base object invoking:         base::process(double d):    d = 3.5
+  derived object invoking:      derived::process(int i):    i = 3
+  derived object invoking:      derived::process(int i):    i = 3
+
+  base provides virtual functions process(int) and process(double)
+  derived overrides process(int) which hides base process(double)
+  so derived::process(3.5) truncates 3.5 to integer 3
+
+ ===========================================
+  Message: don't overload virtual functions
+ ===========================================
+

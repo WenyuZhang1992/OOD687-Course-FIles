@@ -1,0 +1,4 @@
+﻿  predicateFunctors.cpp
+predicateFunctors.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  predicateFunctors.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\STL\predicateFunctors\Debug\predicateFunctors.exe
+  predicateFunctors.vcxproj -> Debug\predicateFunctors.pdb (Full PDB)

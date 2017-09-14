@@ -1,0 +1,168 @@
+///////////////////////////////////////////////////////////////
+//  maps.cpp - demonstrate basic map operations              //
+//                                                           //
+//  Jim Fawcett, ECS500 instructor, Su'99                    //
+///////////////////////////////////////////////////////////////
+//  STL maps are sorted associative containers               //
+//  By default they sort on operator<(...) for the set       //
+//  element type.  You can change that by using a predicate  //
+//  function during construction (see use of greater<>() for //
+//  map down, shown below).                                  //
+//                                                           //
+//  STL maps are implemented with red-black binary trees     //
+//  This implies that for large maps:                        //
+//    - finding any element is fast (binary search)          //
+//    - inserting an element is fast                         //
+//    - deleting an element is fast                          //
+///////////////////////////////////////////////////////////////
+
+#pragma warning(disable : 4786)  // benign warning
+#pragma warning(disable : 4503)  // may cause truncation problems
+#include <map>
+#include <list>
+#include <string>
+#include <iostream>
+#include <iomanip>     // setw(...)
+#include <functional>  // added for VS2012
+using namespace std;
+
+//----< insertion operator for lists of strings >--------------
+
+ostream& operator<<(ostream &out, const list<string> &los) {
+
+  list<string>::const_iterator it;
+  for(it = los.begin(); it != los.end(); it++)
+    out << "  " << *it;
+  out << endl;
+  return out;
+}
+
+//----< generic function to display container contents >-------
+//
+
+enum style { bracketed, open };
+
+// T1 is the container type, e.g., map< string, list< string > >
+// T2 is the value type for the container, e.g., list< string >
+
+template <class T1, class T2>
+void showMap(const T1 &cont, style mapStyle = bracketed) {
+
+  cout << "  size of container = " << cont.size() << endl;
+  T1::const_iterator it1;
+  for(it1 = cont.begin(); it1 != cont.end(); it1++) {
+    if(mapStyle == bracketed)
+      cout << "    <" << setw(13) << (*it1).first << ",";
+    else
+      cout << "    " << (*it1).first << "\n    ";
+    T2::const_iterator it2;
+    for(it2 = (*it1).second.begin(); it2 != (*it1).second.end(); it2++)
+      cout << " " << *it2;
+    if(mapStyle == bracketed)
+      cout << ">\n";
+    else
+      cout << '\n';
+  }
+}
+//
+//----< demonstrate map capabilities >-------------------------
+
+void main() {
+
+  cout << "\n  Demonstrate basic STL Map operations "
+       << "\n ======================================\n";
+
+  cout << "\n -------------------------"
+       << "\n  define a set of strings "
+       << "\n -------------------------\n";
+
+  typedef list<string> stringList;
+  typedef map<string,stringList> stringMap;
+  stringMap up;
+  stringList temp;
+  temp.push_back("one");
+
+  // insert pair<"first string",temp> in stringMap up.
+
+  up["first string"] = temp;
+
+  temp.push_back("two");
+  up["second string"] = temp;
+  temp.push_back("three");
+  up["third string"] = temp;
+
+  // show contents of stringMap with
+  // values of type stringList
+
+  showMap<stringMap,stringList>(up);
+
+  cout << "\n --------------------------------------"
+       << "\n  define a new map with reversed order "
+       << "\n --------------------------------------\n";
+
+  typedef map< string, stringList, greater<string> > revStringMap;
+  revStringMap down;
+  temp.clear();
+  temp.push_back("one");
+  down["first string"] = temp;
+  temp.push_back("two");
+  down["second string"] = temp;
+  temp.push_back("three");
+  down["third string"] = temp;
+  showMap<revStringMap,stringList>(down);    
+
+//
+
+  cout << "\n -------------------------"
+       << "\n  demonstrate find by key "
+       << "\n -------------------------\n";
+
+  showMap<revStringMap,stringList>(down);
+  cout << '\n';
+  string key = "second string";
+  revStringMap::iterator it = down.find(key);
+  if(it != down.end())
+    cout << "  found key = \""   << (*it).first << "\""
+         << ", value = " << (*it).second  << '\n';
+  else
+    cout << "  couldn't find key = \"" << key   << "\"\n"; 
+
+  key = "Pablo Picaso";
+  it = down.find(key);
+  if(it != down.end())
+    cout << "  found key = \""   << (*it).first << "\""
+         << ", value = " << (*it).second  << '\n';
+  else
+    cout << "  couldn't find key = \"" << key   << "\"\n"; 
+
+  cout << "\n ----------------------------"
+       << "\n  demonstrate erasing by key "
+       << "\n ----------------------------\n";
+
+  cout << "  key = \"first string\"\n";
+  down.erase("first string");
+  showMap<revStringMap,stringList>(down);
+
+  cout << "\n -----------------------------"
+       << "\n  demonstrate erasing a range "
+       << "\n -----------------------------\n";
+
+  cout << "  starting map:\n";
+  temp.push_back("four");
+  up["fourth string"] = temp;
+  showMap<stringMap,stringList>(up);
+
+  cout << "\n  erasing:\n";
+  stringMap::iterator it1, it2;
+  it1 = up.begin();
+  it2 = up.end();
+  --it2; --it2;
+  cout << "  range = [\"" << (*it1).first 
+       << "\", \"" << (*it2).first << "\")\n";
+  up.erase(it1,it2);
+
+  cout << "\n  resulting map:\n";
+  showMap<stringMap,stringList>(up);
+  cout << endl;
+
+}

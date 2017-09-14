@@ -1,0 +1,24 @@
+
+  Using Handles to Blobs
+ ========================
+
+  Original Blob Order - here's verbousBlob!
+ -------------------------------------------
+  Hi: Charley here.
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+  Hi: Frank here.
+
+  Sorted Blob Order - still here!
+ ---------------------------------
+  Hi: Charley here.
+  Hi: Frank here.
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+
+
+ ==========
+  Message:
+ ==========
+
+  Handles support polymorphic operation and memory management.
+  Handled objects must supply a T* T::clone() operation.
+

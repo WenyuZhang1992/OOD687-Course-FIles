@@ -1,0 +1,4 @@
+﻿  READWRIT.CPP
+READWRIT.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  readwrite.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\iostreams\readwrite\.\Debug\readwrite.exe
+  readwrite.vcxproj -> .\Debug/readwrite.pdb (Full PDB)

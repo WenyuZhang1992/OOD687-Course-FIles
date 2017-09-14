@@ -1,0 +1,4 @@
+﻿  FORMATS.CPP
+FORMATS.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  formats.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\iostreams\formats\.\Debug\formats.exe
+  formats.vcxproj -> .\Debug/formats.pdb (Full PDB)

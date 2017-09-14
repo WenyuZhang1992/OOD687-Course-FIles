@@ -1,0 +1,4 @@
+﻿  max.cpp
+max.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  MAX.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\templates\MAX\.\Debug\MAX.exe
+  MAX.vcxproj -> .\Debug/MAX.pdb (Full PDB)

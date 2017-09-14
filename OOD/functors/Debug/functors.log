@@ -1,0 +1,3 @@
+﻿  functor.cpp
+c:\su\cse687\code\functors\functor.cpp(221): warning C4018: '<' : signed/unsigned mismatch
+  functors.vcxproj -> C:\su\CSE687\code\functors\.\Debug\functors.exe

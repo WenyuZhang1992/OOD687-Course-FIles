@@ -1,0 +1,27 @@
+
+====< processing file test.txt using istream::getline() >====
+
+this is the first line
+second line
+third line
+fourth line
+fifth line
+this is the sixth and final line
+
+====< processing file test.txt using filebuf::rdbuf() >====
+
+this is the first line
+second line
+third line
+fourth line
+fifth line
+this is the sixth and final line
+
+====< processing last half of this 106 byte file >====
+
+fifth line
+this is the sixth and final line
+
+attempting to read past EOF makes stream state not good
+stream state good after clear()
+after backing up and reading i stream state still good

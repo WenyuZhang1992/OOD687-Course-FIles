@@ -1,0 +1,27 @@
+
+  Demonstrating Vectors Package
+ ===============================
+
+  demo std::list<int>
+ ---------------------
+  0, 1, 2, 3, 4, 3, 2
+
+  The fourth element of vector is: 3
+
+  pushing back the element -3:
+
+  0, 1, 2, 3, 4, 3, 2, -3
+
+  inserting -3 at beginning:
+
+  -3, 0, 1, 2, 3, 4, 3, 2, -3
+
+  inserting list of three values after second item:
+
+  -3, 0, -1, -2, -3, 1, 2, 3, 4, 3, 2, -3
+
+  demo std::vector<std::string>
+ -------------------------------
+  "zero", "one", "two", "three", "four", "three", "two"
+
+

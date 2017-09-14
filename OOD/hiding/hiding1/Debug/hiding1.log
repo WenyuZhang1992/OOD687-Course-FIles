@@ -1,0 +1,4 @@
+﻿  hiding1.cpp
+hiding1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  hiding1.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\hiding\hiding1\Debug\hiding1.exe
+  hiding1.vcxproj -> Debug\hiding1.pdb (Full PDB)

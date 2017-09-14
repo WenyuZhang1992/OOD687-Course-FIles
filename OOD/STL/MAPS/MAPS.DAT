@@ -1,0 +1,58 @@
+
+  Demonstrate basic STL Map operations 
+ ======================================
+
+ -------------------------
+  define a set of strings 
+ -------------------------
+  size of container = 3
+    < first string, one>
+    <second string, one two>
+    < third string, one two three>
+
+ --------------------------------------
+  define a new map with reversed order 
+ --------------------------------------
+  size of container = 3
+    < third string, one two three>
+    <second string, one two>
+    < first string, one>
+
+ -------------------------
+  demonstrate find by key 
+ -------------------------
+  size of container = 3
+    < third string, one two three>
+    <second string, one two>
+    < first string, one>
+
+  found key = "second string", value =   one  two
+
+  couldn't find key = "Pablo Picaso"
+
+ ----------------------------
+  demonstrate erasing by key 
+ ----------------------------
+  key = "first string"
+  size of container = 2
+    < third string, one two three>
+    <second string, one two>
+
+ -----------------------------
+  demonstrate erasing a range 
+ -----------------------------
+  starting map:
+  size of container = 4
+    < first string, one>
+    <fourth string, one two three four>
+    <second string, one two>
+    < third string, one two three>
+
+  erasing:
+  range = ["first string", "second string")
+
+  resulting map:
+  size of container = 2
+    <second string, one two>
+    < third string, one two three>
+

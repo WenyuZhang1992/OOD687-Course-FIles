@@ -1,0 +1,242 @@
+/////////////////////////////////////////////////////////////////
+//  HandleToBlob.cpp
+//    - demonstrates how to store heterogenious objects from
+//      a class hierarchy in a vector without asking user to
+//      assume memory management.
+//
+//  Uses a handle class described in:
+//    Accelerated C++, Koenig and Moo, Addison-Wesley, 2000
+//
+//  Jim Fawcett, CSE687 - Object Oriented Design, Spring 2003
+/////////////////////////////////////////////////////////////////
+
+#include <vector>
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <functional>
+using namespace std;
+
+///////////////////////////////////////////////////////////////
+//  Base Blob class - objects don't say too much
+//
+//  Must add virtual clone() function to support handle class.
+//
+class Blob
+{
+public:
+  Blob(const std::string& name)
+  {
+    _name = name;
+  }
+  virtual Blob* clone() { return new Blob(*this); }
+  virtual ~Blob() {}
+  virtual std::string say()
+  {
+    std::string temp = "  Hi: ";
+    temp += _name;
+    temp += " here.";
+    return temp;
+  }
+  std::string& name() { return _name; }
+
+protected:
+  std::string _name;
+};
+//
+///////////////////////////////////////////////////////////////
+//  Derived verboseBlob class - verbose objects say more
+//                              and are larger in size.
+//
+//  Must add virtual clone() function to support handle class.
+//
+class verboseBlob : public Blob
+{
+public:
+  verboseBlob(const std::string& name, const std::string& buddy) : Blob(name)
+  {
+    _buddy = buddy;
+  }
+  virtual Blob* clone() { return new verboseBlob(*this); }
+  std::string say()
+  {
+    std::string temp = "  Hi there: I'm a blob and my name is ";
+    temp += _name;
+    temp += ".  My buddy here, is ";
+    temp += _buddy + ".";
+    return temp;
+  }
+  std::string& buddy() { return _buddy; }
+
+private:
+  std::string _buddy;
+};
+//
+///////////////////////////////////////////////////////////////
+//  handle class takes over memory management and still
+//  supports polymorphic calls with the help of Blob cloning.
+//
+template <typename T>  // T must provide T* T::clone() method.
+class handle
+{
+public:
+  handle();
+  handle(const handle<T>& h);
+  handle(T* pT);
+  ~handle();
+  handle<T>& operator=(const handle<T>& h);
+  operator bool() const;
+  T& operator*() const;
+  T* operator->() const;
+private:
+  T* _pT;
+};
+//----< default constructor >----------------------------------
+
+template <typename T>
+inline handle<T>::handle() : _pT(0) {}
+
+//----< copy constructor >-------------------------------------
+
+template <typename T>
+inline handle<T>::handle(const handle<T>& h) : _pT(0)
+{
+  if(h._pT)
+    _pT = h._pT->clone();
+}
+//----< promotion constructor >--------------------------------
+
+template <typename T>
+inline handle<T>::handle(T* pT) : _pT(pT) {}
+
+//----< destructor >-------------------------------------------
+
+template <typename T>
+inline handle<T>::~handle() { delete _pT; }
+
+//----< cast operator >----------------------------------------
+
+template <typename T>
+inline handle<T>::operator bool() const { return _pT; }
+
+//
+//----< assignment >-------------------------------------------
+
+template <typename T>
+handle<T>& handle<T>::operator =(const handle& h)
+{
+  if(this != &h)
+  {
+    delete _pT;
+    _pT = h._pT ? h._pT->clone() : 0;
+  }
+  return *this;
+}
+//----< dereference operator >---------------------------------
+
+template <typename T>
+T& handle<T>::operator*() const
+{
+  if(_pT)
+  {
+    return *_pT;
+  }
+  throw invalid_argument("attempt to dereference unbound handle");
+}
+//----< selection operator >-----------------------------------
+
+template <typename T>
+T* handle<T>::operator->() const
+{
+  if(_pT)
+  {
+    return _pT;
+  }
+  throw invalid_argument("attempt to select with unbound handle");
+}
+//
+//----< display container contents >---------------------------
+
+template<typename cont>
+void show(cont &c)
+{
+  cont::iterator it;
+  for(it=c.begin(); it!=c.end(); ++it)
+  {
+    cout << endl << ((*it)->say()).c_str();
+  }
+  cout << endl;
+}
+//----< compare Blobs by name >--------------------------------
+
+bool lessForBlobs(handle<Blob> hb1, handle<Blob> hb2)
+{
+  return (hb1->name() < hb2->name());
+}
+//----< make fancy title >-------------------------------------
+
+const int UPPER = true;
+template <char ch>
+string title(const string &t,bool upper=false)
+{
+  string underline(t.length()+2,ch);
+  string temp;
+  if(upper)
+    temp = string("\n ") + underline + string("\n  ");
+  else
+    temp = string("\n  ");
+  return temp + t + string("\n ") + underline;
+}
+//----< entry point >------------------------------------------
+
+int main()
+{
+  cout << title<'='>("Using Handles to Blobs") << endl;
+  vector< handle<Blob> > Blobs;
+
+  // push_back will copy handles which deliver polymorphic pointer
+  // so still have no slicing!
+
+  Blobs.push_back(handle<Blob>(new Blob("Charley")));
+  Blobs.push_back(handle<Blob>(new verboseBlob("Joe","Frank")));
+  Blobs.push_back(handle<Blob>(new Blob("Frank")));
+
+  cout << title<'-'>("Original Blob Order - here's verbousBlob!");
+  show(Blobs);
+
+  sort(Blobs.begin(),Blobs.end(),lessForBlobs);
+  cout << title<'-'>("Sorted Blob Order - still here!");
+  show(Blobs);
+  cout << endl;
+
+  // handles destroy their bound objects when they go out of scope
+
+  cout << title<'='>("Message:",UPPER) << endl;
+  cout << "\n  Handles support polymorphic operation and memory management."
+       << "\n  Handled objects must supply a T* T::clone() operation."
+       << "\n\n";  
+}
+
+  Using Handles to Blobs
+ ========================
+
+  Original Blob Order - here's verbousBlob!
+ -------------------------------------------
+  Hi: Charley here.
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+  Hi: Frank here.
+
+  Sorted Blob Order - still here!
+ ---------------------------------
+  Hi: Charley here.
+  Hi: Frank here.
+  Hi there: I'm a blob and my name is Joe.  My buddy here, is Frank.
+
+
+ ==========
+  Message:
+ ==========
+
+  Handles support polymorphic operation and memory management.
+  Handled objects must supply a T* T::clone() operation.
+

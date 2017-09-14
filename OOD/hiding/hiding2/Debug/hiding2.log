@@ -1,0 +1,5 @@
+﻿  hiding2.cpp
+y:\documents\visual studio 2015\projects\hiding\hiding2\hiding2.cpp(104): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+hiding2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  hiding2.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\hiding\hiding2\Debug\hiding2.exe
+  hiding2.vcxproj -> Debug\hiding2.pdb (Full PDB)

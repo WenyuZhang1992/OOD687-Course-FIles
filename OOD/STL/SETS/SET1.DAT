@@ -1,0 +1,29 @@
+list of command line arguments in arrival order:
+  this
+  is
+  a
+  set
+  of
+  command
+  line
+  arguments
+
+list of command line arguments in lexographic order:
+  a
+  arguments
+  command
+  is
+  line
+  of
+  set
+  this
+
+list of command line arguments in reverse lexographic order:
+  this
+  set
+  of
+  line
+  is
+  command
+  arguments
+  a

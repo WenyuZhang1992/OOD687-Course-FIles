@@ -1,0 +1,12 @@
+
+  Demonstrating Templates and Functors 
+ ======================================
+
+  constructing a dog
+  constructing an animal
+    I am a dog.  I often have fleas and smell badly
+
+  constructing a cat
+  constructing an animal
+    I am a cat.  I usually ignore my owner
+

@@ -1,0 +1,4 @@
+﻿  FILEIO.CPP
+FILEIO.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  fileIO.vcxproj -> Y:\Documents\Visual Studio 2015\Projects\OOD\iostreams\fileIO\.\Debug\fileIO.exe
+  fileIO.vcxproj -> .\Debug/fileIO.pdb (Full PDB)

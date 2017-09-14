@@ -1,0 +1,15 @@
+
+  Problems with Ambiguity in Template Arguments
+ ===============================================
+  Original Blob Order
+ ---------------------
+  Hi: Charley Blob here
+  Hi: Joe Blob here
+  Hi: Frank Blob here
+
+  Sorted Blob Order
+ -------------------
+  Hi: Charley Blob here
+  Hi: Frank Blob here
+  Hi: Joe Blob here
+
